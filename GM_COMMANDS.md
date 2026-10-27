@@ -49,7 +49,7 @@ Permission tags below: **[P]** = any player (`SEC_PLAYER`), **[GM]** = GameMaste
 ## 1. WoW Legends custom commands (dot-commands)
 
 ### 1.1 `.worldpvp` — all-zones World PvP control **[GM]** *(v1.1, RA/console too)*
-Open-world PvP everywhere: enemy-faction players **and** the AI bots become attackable. Modes are set in `mod_wowlegends.conf` (`WorldPvP.Mode` = `always` | `timed`); these commands drive the **timed** mode.
+Open-world PvP everywhere: enemy-faction players **and** the AI bots become attackable. Only same-faction players, GMs and the **sanctuaries (Dalaran, Shattrath)** stay safe — capitals and starting zones do **not** (verified on the PTR 2026-10-27). Modes are set in `mod_wowlegends.conf` (`WorldPvP.Mode` = `always` | `timed`); these commands drive the **timed** mode.
 
 | Command | Args | What it does |
 |---|---|---|

@@ -142,7 +142,7 @@ local Gear = {
 local WorldPvP = {
     { id="wpvp_start", label="Open World PvP", format=".worldpvp start %s", level=2, wl=true, group="Legends", danger=true,
       args={ {key="minutes",placeholder="minutes (opt)",numeric=true,optional=true} },
-      tooltip="Open an all-zones World PvP window now (timed mode). Optional duration in minutes; omit for the configured default. While open, enemy players AND bots are attackable everywhere; same-faction, GMs, cities and sanctuaries stay safe." },
+      tooltip="Open an all-zones World PvP window now (timed mode). Optional duration in minutes; omit for the configured default. While open, enemy players AND bots are attackable everywhere; same-faction players, GMs and the sanctuaries (Dalaran, Shattrath) stay safe - capitals and starting zones do not." },
     { id="wpvp_status", label="World PvP status", format=".worldpvp status", level=2, wl=true, group="Legends",
       tooltip="Report mode (off / always / timed), whether a window is active, and time remaining / time to next." },
     { id="wpvp_stop", label="Close World PvP", format=".worldpvp stop", level=2, wl=true, group="Legends", danger=true,
@@ -204,7 +204,7 @@ WLGM.RegisterTab({
             { label = "Paths",        builder = section("The Herald of the Fallen offers opt-in challenge Paths - the Long Road, the Iron Oath, the Pilgrim's Way, the Slow Burn - sworn by players at the NPC in any starting zone. The buttons below are GM TEST tools that act on your own character; .path shows your own status.", PathsRows) },
             { label = "XP Rate",      builder = section("Set your own leveling pace. Each player controls a personal XP multiplier (1 = blizzlike, up to the server cap).", XP) },
             { label = "Gear",         builder = section("GM tool: instantly gear the targeted bot/player (or yourself). Spec-aware. Players gear up via Companion + bot init tiers instead.", Gear) },
-            { label = "World PvP",    builder = section("Open a server-wide World PvP window: everyone is flagged everywhere. Same-faction players, GMs, cities and sanctuaries stay safe.", WorldPvP) },
+            { label = "World PvP",    builder = section("Open a server-wide World PvP window: everyone is flagged everywhere. Same-faction players, GMs and the sanctuaries (Dalaran, Shattrath) stay safe; capitals and starting zones do not.", WorldPvP) },
             { label = "Battlefronts", builder = battlefrontBuilder },
         }, "legends")
     end,

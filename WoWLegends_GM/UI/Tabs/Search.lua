@@ -8,6 +8,9 @@ local NUM_ROWS = 18
 local ROW_H    = 22
 
 local function isBot(entry) return entry.n:sub(1, 1) ~= "." end
+-- "Looking for group (spoken)" etc. are reference rows for plain speech, not
+-- commands: sending their name as a $ order would just spam the party.
+local function isSpoken(entry) return entry.n:find("(spoken)", 1, true) ~= nil end
 
 WLGM.RegisterTab({
     id = "search", label = "Search",
@@ -73,6 +76,7 @@ WLGM.RegisterTab({
 
             r:SetScript("OnClick", function(self)
                 local d = self.data; if not d then return end
+                if isSpoken(d) then return end
                 if isBot(d) then
                     if IsShiftKeyDown() then WLGM.RunBotOrder(d.n, { scope = "party" })
                     else ChatFrame_OpenChat("$" .. (d.u:gsub("^%$", ""))) end
@@ -88,7 +92,9 @@ WLGM.RegisterTab({
                 GameTooltip:AddLine(d.u, 0.27, 0.84, 1, true)
                 if d.d ~= "" then GameTooltip:AddLine(d.d, 1, 1, 1, true) end
                 GameTooltip:AddLine(" ")
-                if isBot(d) then
+                if isSpoken(d) then
+                    GameTooltip:AddLine("Plain speech: say or whisper these words in chat, no $. Nothing to click.", 0.9, 0.8, 0.5, true)
+                elseif isBot(d) then
                     GameTooltip:AddLine("Bot order ($). Click to edit in chat, Shift-click to send to party.", 0.9, 0.8, 0.5, true)
                 else
                     GameTooltip:AddLine("Requires: " .. WLGM.TierTag(d.l), 0.7, 0.7, 0.7)

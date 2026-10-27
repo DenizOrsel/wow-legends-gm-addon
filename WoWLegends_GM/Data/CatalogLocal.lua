@@ -8,12 +8,15 @@ local addonName, WLGM = ...
 
 -- Enriched or added entries, keyed by exact command name (n). Fields mirror
 -- Catalog.lua: l=accessLevel g=group u=usage d=description w=WLonly.
+-- The two 'talents spec' rows ENRICH in place: their n must match the website's
+-- name exactly. The site added a '$' prefix to every bot order on 2026-10-27;
+-- if these rows ever append instead (count = site + 4), re-anchor them here.
 local OVERRIDES = {
-    { n = "talents spec [name]", l = 5, g = "bot:setup", u = "talents spec <premadeName>",
-      d = "Set the bot's spec (= its tank/heal/dps role). <premadeName> must be the PREMADE config name, matched exactly - e.g. 'prot pve', 'resto pvp' - NOT the tree name the bot reports ('protection' fails with 'Spec not found'). Whisper 'talents spec list' for the bot's own valid names, or use the dropdown in Bots > Roles (it also auto-runs autogear, since a spec change alone does not re-gear).",
+    { n = "$talents spec [name]", l = 5, g = "bot:setup", u = "$talents spec <premadeName>",
+      d = "Set the bot's spec (= its tank/heal/dps role). <premadeName> must be the PREMADE config name, matched exactly - e.g. 'prot pve', 'resto pvp' - NOT the tree name the bot reports ('protection' fails with 'Spec not found'). Whisper '$talents spec list' for the bot's own valid names, or use the dropdown in Bots > Roles (it also auto-runs autogear, since a spec change alone does not re-gear).",
       w = 0 },
-    { n = "talents spec list", l = 5, g = "bot:setup", u = "talents spec list",
-      d = "List the bot's valid PREMADE spec names (live from the server config). These exact strings - 'prot pve', 'cat pve', ... - are what 'talents spec <name>' accepts; the friendly tree names it reports elsewhere are not.",
+    { n = "$talents spec list", l = 5, g = "bot:setup", u = "$talents spec list",
+      d = "List the bot's valid PREMADE spec names (live from the server config). These exact strings - 'prot pve', 'cat pve', ... - are what '$talents spec <name>' accepts; the friendly tree names it reports elsewhere are not.",
       w = 0 },
 
     -- ADDED, not enriched: the website catalog lists the 10 PLAYER .camp
